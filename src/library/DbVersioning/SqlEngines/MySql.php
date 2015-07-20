@@ -35,7 +35,7 @@ class CodePax_DbVersioning_SqlEngines_MySql extends CodePax_DbVersioning_SqlEngi
      * */
     public function executeChangeScript($_sql_file)
     {
-        $command_pattern = '%s --user=%s --password=%s --database=%s --host=%s < %s';
+        $command_pattern = '%s --user=%s --password=%s --database=%s --host=%s < "%s"';
         $shell_command = sprintf($command_pattern, PATH_TO_SQL_BIN, DB_USER, DB_PASS, DB_NAME, DB_HOST, $_sql_file);
         $this->runCommand($shell_command);
     }

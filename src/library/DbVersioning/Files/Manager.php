@@ -93,7 +93,6 @@ class CodePax_DbVersioning_Files_Manager
     {
         $baselines = array();
         $baselines_path = sprintf(self::$baselines_path, PROJECT_DIR, DB_VERSIONING_DIR, DIRECTORY_SEPARATOR);
-
         if (is_dir($baselines_path)) {
             $handle = opendir($baselines_path);
             if ($handle) {

@@ -22,7 +22,7 @@
  * @copyright Copyright (c) 2012 Zitec COM srl, Romania
  * @license New BSD http://www.codepax.com/license.html
  */
-require '../application/bootstrap.php';
+require '../src/application/bootstrap.php';
 
 try {
     $sql_engine = CodePax_DbVersioning_SqlEngines_Factory::factory();
