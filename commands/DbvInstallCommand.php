@@ -27,7 +27,7 @@ class DbvInstallCommand extends Command
 
         try {
             $sql_engine = CodePax_DbVersioning_SqlEngines_Factory::factory();
-            $dir = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'utils' . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR;
+            $dir = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR;
 
             switch (DB_ENGINE) {
                 case 'mysql':
