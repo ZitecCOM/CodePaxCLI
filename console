@@ -9,5 +9,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 
 $app = new Application();
-$app->add(new DbvCommand());
+$app->add(new DbvInstallCommand);
+$app->add(new DbvInfoCommand());
+$app->add(new DbvRunCommand());
+$app->add(new DbvNewBaselineCommand());
 $app->run();

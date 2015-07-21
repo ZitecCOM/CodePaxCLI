@@ -6,13 +6,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class DbvCommand extends Command
+class DbvRunCommand extends Command
 {
     protected function configure()
     {
         $this
             ->setName('dbv:run')
-            ->setDescription('Run database versioning')
+            ->setDescription('Runs database versioning')
             ->addOption(
                'preserve-test-data',
                null,
@@ -25,6 +25,11 @@ class DbvCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         require __DIR__ . '/../src/application/bootstrap.php';
+
+        if (! defined('USE_DB_VERSIONING') || (defined('USE_DB_VERSIONING') && USE_DB_VERSIONING === false )) {
+            $output->writeln('Database versioning not enabled. Check configuration file.');
+            exit();
+        }
 
         $preserve_test_data = false;
 
@@ -45,13 +50,14 @@ class DbvCommand extends Command
             
             unset($db_scripts_result['run_change_scripts'], $db_scripts_result['run_data_change_scripts']);
 
-        } catch (CodePax_DbVersioning_Exception $dbv_e) {
-            $output->writeln($dbv_e->getMessage());
+        } catch (CodePax_DbVersioning_Exception $e) {
+            $output->writeln($e->getMessage());
             exit();
         } catch (Exception $e) {
             $output->writeln($e->getMessage());
             exit();
         }
 
+        $output->writeln('Everything went smoothly!');
     }
 }

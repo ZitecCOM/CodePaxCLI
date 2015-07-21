@@ -42,13 +42,14 @@ class CodePax_DbVersioning_Environments_Dev extends CodePax_DbVersioning_Environ
     {
         $this->sql_engine->generateTestData(CodePax_DbVersioning_Files_Manager::getTestDataFile());
         // commit the new test data
+
+        $scm_wrapper = CodePax_Scm_Factory::factory(VERSIONING);
+
         if (defined('SVN_USER') || VERSIONING === 'SVN') {
-            $svn_wrapper = new CodePax_Scm_Svn(SCM_USER, SCM_PASS, REPO_URL, PROJECT_DIR);
-            $svn_wrapper->commit("Codepax generated test data file", DB_VERSIONING_DIR);
+            $scm_wrapper->commit("Codepax generated test data file", DB_VERSIONING_DIR);
         } else if (VERSIONING === 'GIT') {
-            $git_wrapper = new CodePax_Scm_Git(SCM_USER, SCM_PASS, REPO_URL, PROJECT_DIR);
-            $git_wrapper->addAndCommit("Codepax generated test data file", DB_VERSIONING_DIR);
-            $git_wrapper->push();
+            $scm_wrapper->addAndCommit("Codepax generated test data file", DB_VERSIONING_DIR);
+            $scm_wrapper->push();
             
         }
     }
