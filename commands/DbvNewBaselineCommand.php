@@ -18,8 +18,6 @@ class DbvNewBaselineCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        require __DIR__ . '/../src/application/bootstrap.php';
-
         if (! defined('USE_DB_VERSIONING') || (defined('USE_DB_VERSIONING') && USE_DB_VERSIONING === false )) {
             $output->writeln('Database versioning not enabled. Check configuration file.');
             exit();
