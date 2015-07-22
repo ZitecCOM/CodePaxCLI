@@ -110,7 +110,6 @@ define('SCM_REMOTE_NAME', 'origin');
 /**
  * Indicates the SCM prefix used for tags
  * Available only for SVN
-
  * Examples:
  * "tags/" for SVN
  * */
