@@ -30,6 +30,8 @@ class DbvInfoCommand extends Command
         $change_scripts = $db_versioning_handler->getChangeScripts();
         $data_change_scripts = $db_versioning_handler->getDataChangeScripts();
 
+        $output->writeln('Environment: ' . strtoupper(APPLICATION_ENVIRONMENT));
+        $output->writeln('');
         $output->writeln('Database name: ' . DB_NAME);
         $output->writeln('Database structure version: ' . $latest_structure_version[CodePax_DbVersions::VERSION_ATTRIBUTE]);
         $output->writeln('Database structure last update: ' . $latest_structure_version[CodePax_DbVersions::DATE_ADDED_ATTRIBUTE]);

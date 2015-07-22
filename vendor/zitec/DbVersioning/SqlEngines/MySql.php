@@ -95,7 +95,7 @@ class CodePax_DbVersioning_SqlEngines_MySql extends CodePax_DbVersioning_SqlEngi
     public function generateBaseline($_target_sql_file)
     {
         if ($this->is_windows === true) {
-            $command_pattern = '%s --user=%s --password=%s --host=%s --routines --no-data --triggers %s --result-file=%s';
+            $command_pattern = '%s --user=%s --password=%s --host=%s --routines --no-data --triggers %s --result-file="%s"';
             $shell_command = sprintf($command_pattern, PATH_TO_SQL_DUMP_BIN, DB_USER, DB_PASS, DB_HOST, DB_NAME, $_target_sql_file);
         } else {// on Unix, also clean-up the dump
             $command_pattern = "%s --user=%s --password=%s --host=%s --routines --no-data --triggers %s |
@@ -122,7 +122,7 @@ class CodePax_DbVersioning_SqlEngines_MySql extends CodePax_DbVersioning_SqlEngi
     {
         $ignore_pattern = $this->getIgnoreTablesOption('--ignore-table=%s.%s');
         $command_pattern = '%s --user=%s --password=%s --host=%s --skip-triggers --skip-disable-keys ';
-        $command_pattern .= '--no-create-info --complete-insert %s %s --result-file=%s';
+        $command_pattern .= '--no-create-info --complete-insert %s %s --result-file="%s"';
         $shell_command = sprintf($command_pattern, PATH_TO_SQL_DUMP_BIN, DB_USER, DB_PASS, DB_HOST, $ignore_pattern, DB_NAME, $_target_sql_file);
         $this->runCommand($shell_command);
     }
