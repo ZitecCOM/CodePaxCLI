@@ -126,7 +126,7 @@ class CodePax_DbVersioning_Environments_Stg extends CodePax_DbVersioning_Environ
 
         // commit the new baseline and versioning DB
         $scm_wrapper = CodePax_Scm_Factory::factory(VERSIONING);
-
+        
         if (VERSIONING === 'SVN') {
             $scm_wrapper->addAndCommit("SVN GUI generated baseline at version {$baseline_version}", DB_VERSIONING_DIR);
         }
