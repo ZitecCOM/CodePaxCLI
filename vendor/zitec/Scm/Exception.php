@@ -13,23 +13,16 @@
  * obtain it through the world-wide-web, please send an email
  * to license@codepax.com so we can send you a copy immediately.
  * */
+
 /**
- * Set up the application environment
+ * Custom exception class for SCM module
  *
  * @category CodePax
+ * @subpackage Scm
  * @copyright Copyright (c) 2012 Zitec COM srl, Romania
  * @license New BSD http://www.codepax.com/license.html
- */
-date_default_timezone_set('UTC');
-
-define('VERSION_NUMBER', '2.0.0');
-
-define('ABS_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
-
-define('APPLICATION_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
-
-define('ROOT_PATH', str_replace('application' . DIRECTORY_SEPARATOR, '', APPLICATION_PATH));
-
-define('CONFIG_PATH', ABS_PATH . 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-
-require CONFIG_PATH . 'config.php';
+ * */
+class CodePax_Scm_Exception extends Exception
+{
+    
+}

@@ -1,3 +1,2 @@
-/vendor/*
-/src/application/config/config.php
-/src/application/config/config.ini
+/app/config/config.php
+/app/config/config.ini
