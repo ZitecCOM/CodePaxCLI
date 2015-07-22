@@ -127,7 +127,7 @@ abstract class CodePax_DbVersioning_SqlEngines_Abstract
     protected function runCommand($_shell_command)
     {
         $command_result = exec($this->postFormatString($_shell_command), $out);
-
+        
         //if the a logs(writable) directory is defined
         //load the command output from there
         if ($this->use_logs_dir) {
