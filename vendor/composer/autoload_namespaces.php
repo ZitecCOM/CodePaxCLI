@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CodePax_' => array($vendorDir . '/zitec', $baseDir . '/src/AppBundle/Model'),
+    '' => array($baseDir . '/src/AppBundle/Command'),
 );

@@ -4,10 +4,9 @@
     },
 
     "autoload": {
-        "classmap": [
-            "src/AppBundle/Model/",
-            "src/AppBundle/Command/",
-            "vendor/zitec/"
-        ]
+        "psr-0": {
+            "CodePax_": ["vendor/zitec/", "src/AppBundle/Model/"],
+            "": "src/AppBundle/Command"
+        }
     }
 }
