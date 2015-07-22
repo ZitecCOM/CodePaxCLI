@@ -5,9 +5,9 @@
 
     "autoload": {
         "classmap": [
-        	"src/AppBundle/Model/",
+            "src/AppBundle/Model/",
             "src/AppBundle/Command/",
-        	"vendor/zitec/"
+            "vendor/zitec/"
         ]
     }
 }
