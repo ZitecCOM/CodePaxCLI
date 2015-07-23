@@ -24,11 +24,9 @@ date_default_timezone_set('UTC');
 
 define('VERSION_NUMBER', '2.0.0');
 
-define('ABS_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+define('ABS_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 
-define('APPLICATION_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
-
-define('ROOT_PATH', str_replace('application' . DIRECTORY_SEPARATOR, '', APPLICATION_PATH));
+define('APPLICATION_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'AppBundle' . DIRECTORY_SEPARATOR);
 
 define('CONFIG_PATH', ABS_PATH . 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
 
