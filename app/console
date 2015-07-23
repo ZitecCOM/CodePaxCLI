@@ -4,7 +4,13 @@
 
 set_time_limit(0);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+	require_once __DIR__ . '/../vendor/autoload.php';
+} else {
+	echo 'Please run "composer install" in order to install CodePaxCLI!';
+	exit();
+}
+
 require_once __DIR__ . '/../src/AppBundle/bootstrap.php';
 
 use Symfony\Component\Console\Application;

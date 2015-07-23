@@ -1,5 +1,39 @@
 [
     {
+        "name": "zitec/codepax",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor.git",
+            "reference": "1b1b840e5723ecbdea5105cf94f30635beae595b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/IulianCristianGrigoritaZitec/CodePaxVendor/zipball/1b1b840e5723ecbdea5105cf94f30635beae595b",
+            "reference": "1b1b840e5723ecbdea5105cf94f30635beae595b",
+            "shasum": ""
+        },
+        "time": "2015-07-23 07:04:16",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "CodePax_": ""
+            }
+        },
+        "authors": [
+            {
+                "name": "Iulian Grigorita",
+                "email": "iulian.grigorita@zitec.com"
+            }
+        ],
+        "support": {
+            "source": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor/tree/master",
+            "issues": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor/issues"
+        }
+    },
+    {
         "name": "symfony/console",
         "version": "v2.7.2",
         "version_normalized": "2.7.2.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "884d7ed5aea9c0d9d8882bc139ba2078",
+    "hash": "08a6a0c77f89aa3c32d850d1c9cf7632",
     "packages": [
         {
             "name": "symfony/console",
@@ -62,12 +62,46 @@
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
             "time": "2015-07-09 16:07:40"
+        },
+        {
+            "name": "zitec/codepax",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor.git",
+                "reference": "1b1b840e5723ecbdea5105cf94f30635beae595b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IulianCristianGrigoritaZitec/CodePaxVendor/zipball/1b1b840e5723ecbdea5105cf94f30635beae595b",
+                "reference": "1b1b840e5723ecbdea5105cf94f30635beae595b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CodePax_": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Iulian Grigorita",
+                    "email": "iulian.grigorita@zitec.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor/tree/master",
+                "issues": "https://github.com/IulianCristianGrigoritaZitec/CodePaxVendor/issues"
+            },
+            "time": "2015-07-23 07:04:16"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zitec/codepax": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -1,0 +1,16 @@
+{
+    "name": "zitec/codepax",
+    "authors": [
+        {
+            "name": "Iulian Grigorita",
+            "email": "iulian.grigorita@zitec.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "CodePax_": ""
+        }
+    }
+}
