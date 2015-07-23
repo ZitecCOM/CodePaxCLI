@@ -47,26 +47,6 @@ define('GIT_PROTOCOL', 'HTTPS');
 define('APPLICATION_ENVIRONMENT', 'dev');
 
 /**
- * Shows/hides switch to branch option
- * */
-define('SWITCH_TO_BRANCH', true);
-
-/**
- * Shows/hides switch to tag option
- * */
-define('SWITCH_TO_TAG', true);
-
-/**
- * Shows/hides switch to revision option
- * */
-define('SWITCH_TO_REVISION', true);
-
-/**
- * Shows/hides switch to trunk button
- * */
-define('SWITCH_TO_TRUNK', true);
-
-/**
  * Indicates that a branch is merged to trunk
  * */
 define('MERGED_BRANCH_MARKER', 'm_');
