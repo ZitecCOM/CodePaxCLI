@@ -18,7 +18,7 @@ Now you just need to add your settings into `app/config/config.php`. You can cop
 
 ## Commands
 
-You can see all the commands available, from root directory of CodePaxCLI, by running `app/console`.
+You can see all the commands available, from root directory of CodePaxCLI, by running `app/console`. You should change the permissions the of file so the it ca be executed.
 
 ### `dbv:info`
 
