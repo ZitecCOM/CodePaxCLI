@@ -14,7 +14,7 @@ Change directory to the repository you've just cloned and install all dependenci
 	$ cd CodePaxCLI
 	$ composer install
 
-Now you just need to add your settings into `app/config/config.php`. You can copy and rename `config.sample.php` to `config.php` and change that file.
+Now you just need to add your settings into `app/config/config.ini`. You can copy and rename `config.sample.ini` to `config.ini` and change that file.
 
 ## Commands
 
