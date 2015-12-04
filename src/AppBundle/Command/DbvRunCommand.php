@@ -14,21 +14,16 @@ class DbvRunCommand extends Command
             ->setName('dbv:run')
             ->setDescription('Runs database versioning')
             ->addOption(
-               'preserve-test-data',
-               null,
-               InputOption::VALUE_NONE,
-               'Preseves test data'
-            )
-        ;
+                'preserve-test-data',
+                null,
+                InputOption::VALUE_NONE,
+                'Preseves test data'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (! defined('USE_DB_VERSIONING') || (defined('USE_DB_VERSIONING') && USE_DB_VERSIONING === false )) {
-            $output->writeln('Database versioning not enabled. Check configuration file.');
-            exit();
-        }
-
+        $configuration = CodePax_Config::getInstance(CONFIG_PATH . 'config.ini');
         $preserve_test_data = false;
 
         if ($input->getOption('preserve-test-data')) {
@@ -36,16 +31,16 @@ class DbvRunCommand extends Command
         }
 
         try {
-            $db_versioning_handler = CodePax_DbVersioning_Environments_Factory::factory(APPLICATION_ENVIRONMENT);
+            $db_versioning_handler = CodePax_DbVersioning_Environments_Factory::factory($configuration);
 
             $generate_test_data = false;
             // generate test data
-            if (APPLICATION_ENVIRONMENT == 'dev' && isset($preserve_test_data) && $preserve_test_data == true) {
+            if (strtolower($configuration->application_environment) == 'dev' && isset($preserve_test_data) && $preserve_test_data == true) {
                 $generate_test_data = true;
             }
 
             $db_scripts_result = $db_versioning_handler->runScripts($generate_test_data);
-            
+
             unset($db_scripts_result['run_change_scripts'], $db_scripts_result['run_data_change_scripts']);
 
         } catch (CodePax_DbVersioning_Exception $e) {

@@ -1,14 +1,13 @@
 #!/usr/bin/env php
 
 <?php
-
 set_time_limit(0);
 
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-	require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
 } else {
-	echo 'Please run "composer install" in order to install CodePaxCLI!';
-	exit();
+    echo 'Please run "composer install" in order to install CodePaxCLI!';
+    exit();
 }
 
 require_once 'bootstrap.php';
@@ -16,7 +15,7 @@ require_once 'bootstrap.php';
 use Symfony\Component\Console\Application;
 
 $app = new Application();
-$app->add(new DbvInstallCommand);
+$app->add(new DbvInstallCommand());
 $app->add(new DbvInfoCommand());
 $app->add(new DbvRunCommand());
 $app->add(new DbvNewBaselineCommand());

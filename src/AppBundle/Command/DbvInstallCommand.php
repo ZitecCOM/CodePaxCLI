@@ -18,16 +18,13 @@ class DbvInstallCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (! defined('USE_DB_VERSIONING') || (defined('USE_DB_VERSIONING') && USE_DB_VERSIONING === false )) {
-            $output->writeln('Database versioning not enabled. Check configuration file.');
-            exit();
-        }
-
+        $configuration = CodePax_Config::getInstance(CONFIG_PATH . 'config.ini');
+        
         try {
-            $sql_engine = CodePax_DbVersioning_SqlEngines_Factory::factory();
+            $sql_engine = CodePax_DbVersioning_SqlEngines_Factory::factory($configuration );
             $dir = ABS_PATH . 'app' . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR;
 
-            switch (DB_ENGINE) {
+            switch (strtolower($configuration->db_engine)) {
                 case 'mysql':
                     $sql_file_name = 'db_versions_mysql.sql';
                     break;

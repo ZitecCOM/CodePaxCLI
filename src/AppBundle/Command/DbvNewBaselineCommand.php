@@ -18,14 +18,11 @@ class DbvNewBaselineCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (! defined('USE_DB_VERSIONING') || (defined('USE_DB_VERSIONING') && USE_DB_VERSIONING === false )) {
-            $output->writeln('Database versioning not enabled. Check configuration file.');
-            exit();
-        }
+        $configuration = CodePax_Config::getInstance(CONFIG_PATH . 'config.ini');
 
-        if (APPLICATION_ENVIRONMENT == 'stg') {
+        if (strtolower($configuration->application_environment) == 'stg') {
             try {
-                $db_versioning_handler = CodePax_DbVersioning_Environments_Factory::factory(APPLICATION_ENVIRONMENT);
+                $db_versioning_handler = CodePax_DbVersioning_Environments_Factory::factory($configuration);
                 $db_versioning_handler->generateBaseline();
             } catch (CodePax_DbVersioning_Exception $e) {
                 $output->writeln('An error ocurred: ' . $e->getMessage());
@@ -36,7 +33,7 @@ class DbvNewBaselineCommand extends Command
             }
             $output->writeln('A new baseline has been generated!');
         } else {
-            $output->writeln('You are not running on stg. The ' . APPLICATION_ENVIRONMENT . ' environment was detected');
+            $output->writeln('You are not running on stg. The ' . strtolower($configuration->application_environment) . ' environment was detected');
         }
         
     }
