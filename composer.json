@@ -1,4 +1,6 @@
 {
+  "name": "zitec/codepax-cli",
+  "license": "BSD",
   "repositories": [
     {
       "type": "vcs",
