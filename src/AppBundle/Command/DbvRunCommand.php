@@ -17,7 +17,7 @@ class DbvRunCommand extends Command
                 'preserve-test-data',
                 null,
                 InputOption::VALUE_NONE,
-                'Preseves test data'
+                'Preserves test data'
             );
     }
 
@@ -32,16 +32,24 @@ class DbvRunCommand extends Command
 
         try {
             $db_versioning_handler = CodePax_DbVersioning_Environments_Factory::factory($configuration);
-
             $generate_test_data = false;
             // generate test data
             if (strtolower($configuration->application_environment) == 'dev' && isset($preserve_test_data) && $preserve_test_data == true) {
                 $generate_test_data = true;
             }
 
+            // run the scripts
             $db_scripts_result = $db_versioning_handler->runScripts($generate_test_data);
 
-            unset($db_scripts_result['run_change_scripts'], $db_scripts_result['run_data_change_scripts']);
+            //print the results
+            if (isset($db_scripts_result['change_scripts'])) {
+                $this->outputResults($output, 'Change scripts results:', $db_scripts_result['change_scripts']);
+            }
+
+            if (isset($db_scripts_result['data_change_scripts'])) {
+                $this->outputResults($output, 'Data change scripts results:', $db_scripts_result['data_change_scripts']);
+            }
+            $output->writeln('Done!');
 
         } catch (CodePax_DbVersioning_Exception $e) {
             $output->writeln($e->getMessage());
@@ -50,7 +58,35 @@ class DbvRunCommand extends Command
             $output->writeln($e->getMessage());
             exit();
         }
+    }
 
-        $output->writeln('Everything went smoothly!');
+
+    /**
+     * Format the output and print it
+     *
+     * @param $output
+     * @param $title
+     * @param $results
+     */
+    protected function outputResults($output, $title, $results)
+    {
+        // print the title
+        $output->writeln($title);
+
+        // print the results
+        foreach ($results as $script_name => $script_output) {
+            // format the output
+            if ($script_output == 'ok') {
+                $formatted_script_output = sprintf("<info>%s</info>", $script_output);
+            } else {
+                $formatted_script_output = sprintf("<fg=red>%s</>", $script_output);
+            }
+
+            // print the message
+            $output->writeln(sprintf('%s: %s', $script_name, $formatted_script_output));
+        }
+
+        // print separator line
+        $output->writeln('-------');
     }
 }
